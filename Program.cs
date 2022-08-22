@@ -7,12 +7,42 @@ namespace HW2
         static void Main(string[] args)
         {
             GetInput getInput = new GetInput();
-            double x = getInput.Double("Введите Х: ");
-            double z = getInput.Double("Введите Z: ");
-            double k = getInput.Double("Введите K: ");
-            Console.WriteLine($"Y = {x}");
+            double number = getInput.Double("INPUT: ");
+            Console.WriteLine(number);
             Console.ReadKey();
         }
+        static double Part1(double a)
+        {
+            double result;
+            result = 2 * a;
+            result += 3 * Math.Pow(a, 2);
+            result += 4 * Math.Pow(a, 3);
+            result = Math.Sqrt(result);
+            return result;
+        }
+        static double Part2(double a, double b)
+        {
+            double result;
+            result = 19 * a;
+            result /= (15 * b);
+            return result;
+        }
+        static double Part3(double a, double b)
+        {
+            double result;
+            result = 2 * a;
+            result += Math.Pow(b, 4);
+            result = Math.Sqrt(result);
+            return result;
+        }
+        static double Part4(double a, double b)
+        {
+            double result;
+            result = 24 * a;
+            result *= (b + 7);
+            return result;
+        }
+
     }
     internal class GetInput
     {
