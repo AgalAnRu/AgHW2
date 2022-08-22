@@ -7,8 +7,10 @@ namespace HW2
         static void Main(string[] args)
         {
             GetInput getInput = new GetInput();
-            double number = getInput.Double("INPUT: ");
-            Console.WriteLine(number);
+            double x = getInput.Double("Введите Х: ");
+            double z = getInput.Double("Введите Z: ");
+            double k = getInput.Double("Введите K: ");
+            Console.WriteLine($"Y = {x}");
             Console.ReadKey();
         }
     }
