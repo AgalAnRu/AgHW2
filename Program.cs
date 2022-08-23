@@ -7,8 +7,14 @@ namespace HW2
         static void Main(string[] args)
         {
             GetInput getInput = new GetInput();
-            double number = getInput.Double("INPUT: ");
-            Console.WriteLine(number);
+            double x = getInput.Double("Введите Х: ");
+            double z = getInput.Double("Введите Z: ");
+            double k = getInput.Double("Введите K: ");
+            double y = (Math.Sqrt(x * (2 + 3 * x + 4 * x * x)) + 19 * z / (15 * k)) / (Math.Sqrt(2 * z + Math.Pow(x, 4)) - 24 * z * (x + 7));
+            Console.WriteLine($"Считали одной строкой. Y = {y}");
+            y = Part1(x) + Part2(z, k);
+            y /= Part3(z, x) - Part4(z, x);
+            Console.WriteLine($"Разбили на функции. Y = {y}");
             Console.ReadKey();
         }
         static double Part1(double a)
