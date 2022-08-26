@@ -13,7 +13,13 @@ namespace HW2
             double y = (Math.Sqrt(x * (2 + 3 * x + 4 * x * x)) + 19 * z / (15 * k)) / (Math.Sqrt(2 * z + Math.Pow(x, 4)) - 24 * z * (x + 7));
             Console.WriteLine($"Считали одной строкой. Y = {y}");
             y = Part1(x) + Part2(z, k);
-            y /= Part3(z, x) - Part4(z, x);
+            if ((k = Part3(z, x) - Part4(z, x)) == 0)
+            {
+                Console.WriteLine("Исключение: Деление на ноль");
+                Console.ReadKey();
+                return;
+            }
+            y /= k;
             Console.WriteLine($"Разбили на функции. Y = {y}");
             Console.ReadKey();
         }
@@ -28,6 +34,11 @@ namespace HW2
         }
         static double Part2(double a, double b)
         {
+            if (b == 0)
+            {
+                Console.WriteLine("Исключение в Part2: деление на ноль");
+                return 0;
+            }
             double result;
             result = 19 * a;
             result /= (15 * b);
@@ -38,6 +49,11 @@ namespace HW2
             double result;
             result = 2 * a;
             result += Math.Pow(b, 4);
+            if (result < 0)
+            {
+                Console.WriteLine("Исключение в Part3: извлечение SQRT из отрицательного числа");
+                return 0;
+            }
             result = Math.Sqrt(result);
             return result;
         }
@@ -70,8 +86,17 @@ namespace HW2
                     continue;
                 }
                 c = cki.KeyChar;
-                if (c == '.' || c == ',') c = separateChar;
+                if (c == '.' || c == ',')
+                {
+                    c = separateChar;
+                }
                 _str += c.ToString();
+                if ((c == separateChar || c == '-') && _str.Length == 1)
+                {
+                    Console.Write(c);
+                    continue;
+                }
+
                 if (double.TryParse(_str, out double result))
                     Console.Write(c);
                 else
